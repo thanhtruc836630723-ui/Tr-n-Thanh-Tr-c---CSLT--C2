@@ -26,7 +26,7 @@ namespace Tructran.session03
            
         }
           
-        public static void Main(string[] args)
+        public static void Main2122(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
 
