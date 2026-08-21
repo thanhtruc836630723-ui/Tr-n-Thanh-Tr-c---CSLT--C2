@@ -9,7 +9,7 @@ namespace Tructran
 {
     internal class Ex_1
     {
-        public static void Main(string[] args)
+        public static void Main123(string[] args)
         {
             int number1 = 10, number2 = 16;
             //1.to Add / Sum Two Numbers.

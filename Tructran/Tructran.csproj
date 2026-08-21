@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="session01\" />
+    <Compile Remove="session01\**" />
+    <EmbeddedResource Remove="session01\**" />
+    <None Remove="session01\**" />
   </ItemGroup>
 
 </Project>
