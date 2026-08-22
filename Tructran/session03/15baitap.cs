@@ -14,6 +14,17 @@ namespace Tructran.session03
             int csd_cu = Convert.ToInt32(Console.ReadLine());
             Console.Write("Nhập chỉ số điện mới (kwh): ");
             int csd_moi = Convert.ToInt32(Console.ReadLine());
+            do
+            {
+                if (csd_moi < csd_cu)
+                {
+                    Console.WriteLine("Chỉ số điện mới phải lớn hơn chỉ số điện cũ. Vui lòng nhập lại.");
+                    Console.Write("Nhập chỉ số điện mới (kwh): ");
+                    csd_moi = Convert.ToInt32(Console.ReadLine());
+                }
+                else;
+                    
+            } while (true) ;
             float tieuthu = csd_moi - csd_cu;
             float dongia = 3059f;
             decimal tienDien = (decimal)(tieuthu * dongia);
@@ -25,7 +36,12 @@ namespace Tructran.session03
             Console.WriteLine($"Thuế VAT = {vat} (VNĐ)");
            
         }
-          
+        static void Bai_2()
+        {
+            //Bài 2: Hệ Thống Theo Dõi Chỉ Số BMI & Đánh Giá Tình Trạng Sức Khỏe
+
+        }
+
         public static void Main2122(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;

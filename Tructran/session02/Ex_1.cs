@@ -44,8 +44,16 @@ namespace Tructran
             Console.WriteLine($"{fah}°F = {(fah - 32) * 5 / 9}°C");
 
             //6.to find the Size of data types
+            Console.WriteLine($"Size of double data type is {sizeof(double)} bytes");
+            Console.WriteLine($"Size of int data type is {sizeof(int)} bytes");
+            Console.WriteLine($"Size of bool data type is {sizeof(bool)} bytes");
+            Console.WriteLine($"Size of long data type is {sizeof(long)} bytes");
 
             //7.to Print ASCII Value(tip: read character, print number of this char)
+            Console.Write("Enter a character: ");
+            int c = Console.Read();
+            Console.WriteLine($"ASCII code of {(char)c} is {c}");
+
             //8.to Calculate Area of Circle
             Console.Write("Nhập bán kính bất kỳ: ");
             double radius = Convert.ToDouble(Console.ReadLine());

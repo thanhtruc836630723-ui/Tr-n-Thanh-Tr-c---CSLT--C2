@@ -7,7 +7,7 @@ namespace Tructran.session03
 {
     internal class Ex3
     {
-        public static void Main2143(string[] args)
+        public static void Main13(string[] args)
         {
             Console.Write("Nhap nhiet do bat ky: ");
             int celsius = Convert.ToInt32(Console.ReadLine());
