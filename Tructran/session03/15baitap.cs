@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Tructran.session03
@@ -11,9 +13,9 @@ namespace Tructran.session03
             //Bài 1: Tính Tiền Điện Sinh Hoạt Gia Đình Theo Bậc Thang(EVN)
 
             Console.Write("Nhập chỉ số điện cũ (kwh): ");
-            int csd_cu = Convert.ToInt32(Console.ReadLine());
+            decimal csd_cu = decimal.Parse(Console.ReadLine());
             Console.Write("Nhập chỉ số điện mới (kwh): ");
-            int csd_moi = Convert.ToInt32(Console.ReadLine());
+            decimal csd_moi = decimal.Parse(Console.ReadLine());
             do
             {
                 if (csd_moi < csd_cu)
@@ -22,19 +24,38 @@ namespace Tructran.session03
                     Console.Write("Nhập chỉ số điện mới (kwh): ");
                     csd_moi = Convert.ToInt32(Console.ReadLine());
                 }
-                else;
                     
             } while (true) ;
-            float tieuthu = csd_moi - csd_cu;
-            float dongia = 3059f;
-            decimal tienDien = (decimal)(tieuthu * dongia);
-            decimal vat = (decimal)(tieuthu * 0.08f);
+            decimal soDien = csd_moi - csd_cu;
+            decimal tempSoDien = soDien; // Biến tạm dùng để khấu trừ theo bậc
+            const decimal BAC_1 = 1806m;
+            const decimal BAC_2 = 1866M;
+            const decimal BAC_3 = 2167;
+            const decimal BAC_4 = 2729;
+            const decimal BAC_5 = 3050;
+
+            decimal tienChuaThue = 0m;
+
+            if (tempSoDien > 300)
+            {
+                tienChuaThue += tempSoDien * BAC_5;
+            }
+            else if (tempSoDien > 200)
+                tienChuaThue += tempSoDien * BAC_4;
+            else if (tempSoDien > 100)
+                tienChuaThue += tempSoDien * BAC_3;
+            else if (tempSoDien > 100)
+                tienChuaThue += tempSoDien * BAC_2;
+            else if (tempSoDien > 50)
+                tienChuaThue += tempSoDien * BAC_1;
+            {
+
+            }
+
+
+         
        
 
-            Console.WriteLine($"Số điện tiêu thụ = {tieuthu} (kwh)");
-            Console.WriteLine($"Tiền điện chưa tính thuế = {tienDien} (VNĐ)");
-            Console.WriteLine($"Thuế VAT = {vat} (VNĐ)");
-           
         }
         static void Bai_2()
         {
@@ -42,11 +63,13 @@ namespace Tructran.session03
 
         }
 
-        public static void Main2122(string[] args)
+        public static void Main54645(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
-
             Bai_1();
+            Bai_2();
+
+            
 
             
            
