@@ -8,7 +8,7 @@ namespace Tructran.sesson04
 {
     internal class GiaiPTBac2
     {
-        static void GiaiPTBac2(int a,int b,int c)
+        static void GiaiPTBac2(double a,double b,double c);
         {
             //Bài tập giải phương trình bậc 2.
             if (a == 0)
@@ -42,14 +42,10 @@ namespace Tructran.sesson04
             
         }
 
-        public static void Main4(string[] args)
+        public static void Main5432(string[] args)
         {
-            Console.Write("Nhập hệ số a: "); int a = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Nhập hệ số b: "); int b = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Nhập hệ số c: "); int c = Convert.ToInt32(Console.ReadLine());
-
   
-            GiaiPTBac2(a,b,c);
+            GiaiPTBac2(double a,double b,double c);
         }
     }
 }
