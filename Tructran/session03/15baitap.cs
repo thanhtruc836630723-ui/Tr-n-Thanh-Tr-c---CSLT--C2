@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
@@ -140,30 +141,141 @@ namespace Tructran.session03
             const decimal tyGiaJPY = 165m;
             const decimal tyGiaGBP = 32100m;
 
-            decimal Phidv = tienVND % 0.005m;
+            decimal Phidv = tienVND * 0.005m;
             decimal soTienQuyDoi = tienVND - Phidv;
-            decimal soTienNgoaiTe = 0m;
-                switch (LoaiNgoaiTe)
-                {
-                    case CurrencyType.USD:
-                        soTienNgoaiTe = tyGiaUSD;
-                        break;
-                    case CurrencyType.EUR:
-                        soTienNgoaiTe = tyGiaEUR;
-                        break;
-                    case CurrencyType.JPY:
-                        soTienNgoaiTe = tyGiaJPY;
-                        break;
-                    case CurrencyType.GBP:
-                        soTienNgoaiTe = tyGiaGBP;
-                        break;
-                    default:
-                        Console.WriteLine("Bạn chọn ngoại tệ không hợp lệ. Vui lòng chọn lại (1-USD, 2-EUR, 3-JPY, 4-GBP): ");
-                        break;
-                    
-                }
+            decimal tyGia = 0m;
+            switch (LoaiNgoaiTe)
+            {
+                case CurrencyType.USD:
+                    tyGia = tyGiaUSD;
+                    break;
+                case CurrencyType.EUR:
+                    tyGia = tyGiaEUR;
+                    break;
+                case CurrencyType.JPY:
+                    tyGia = tyGiaJPY;
+                    break;
+                case CurrencyType.GBP:
+                    tyGia = tyGiaGBP;
+                    break;
+                default:
+                    Console.WriteLine("Bạn chọn ngoại tệ không hợp lệ. Vui lòng chọn lại (1-USD, 2-EUR, 3-JPY, 4-GBP): ");
+                    return;
+            }
+            decimal soTienNgoaiTeNha = soTienQuyDoi / tyGia;
+            Console.WriteLine($"Phí dịch vụ = {Phidv:#,##0} VNĐ");
+            Console.WriteLine($"Số tiền sẽ được quy đổi = {soTienQuyDoi:#,##0} VNĐ ");
+            Console.WriteLine($"Số tiền {LoaiNgoaiTe} nhận được = {soTienNgoaiTeNha:#,##0.00} {LoaiNgoaiTe}");
+        }
+        static void Bai_4()
+        {
+            //Bài 4: Tính Tuổi Chính Xác &Đếm Ngược Ngày Sinh Nhật
+            Console.WriteLine("                  ");
+            Console.Write("Nhập ngày sinh của bạn (dd/MM/yyyy): ");
+            string input = Console.ReadLine();
+            DateTime ngaySinh;
+            bool isValid = DateTime.TryParseExact(
+                    input,
+                    "dd/MM/yyyy",
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.None,
+                    out ngaySinh
+            );
 
+            // 2. Lấy ngày hiện tại của hệ thống (bỏ qua phần giờ phút giây)
+            DateTime ngayHienTai = DateTime.Now.Date;
 
+            if (!isValid || ngaySinh > ngayHienTai)
+            {
+                Console.WriteLine("Lỗi: Ngày sinh không đúng định dạng dd/MM/yyyy hoặc lớn hơn ngày hiện tại!");
+                return;
+            }
+
+            // 3. Tính tuổi chính xác
+            int tuoi = ngayHienTai.Year - ngaySinh.Year;
+            // Nếu trong năm nay chưa tới ngày sinh nhật thì trừ đi 1 tuổi
+            if (ngayHienTai < ngaySinh.AddYears(tuoi))
+            {
+                tuoi--;
+            }
+
+            // 4. Tính tổng số ngày đã sống từ lúc sinh ra (dùng TimeSpan)
+            TimeSpan daSong = ngayHienTai - ngaySinh;
+            int tongSoNgaySong = (int)daSong.TotalDays;
+
+            // 5. Xác định ngày sinh nhật kế tiếp
+            DateTime sinhNhatTiepTheo = new DateTime(ngayHienTai.Year, ngaySinh.Month, ngaySinh.Day);
+            // Nếu sinh nhật năm nay đã qua, dời sang năm sau
+            if (sinhNhatTiepTheo < ngayHienTai)
+            {
+                sinhNhatTiepTheo = sinhNhatTiepTheo.AddYears(1);
+            }
+
+            // Tính số ngày còn lại đến sinh nhật kế tiếp
+            TimeSpan conLai = sinhNhatTiepTheo - ngayHienTai;
+            int soNgayDenSinhNhat = (int)conLai.TotalDays;
+            Console.WriteLine($"Tuổi hiện tại: {tuoi} tuổi");
+            Console.WriteLine($"Bạn đã sống tổng cộng: {tongSoNgaySong:#,##0} ngày");
+            Console.WriteLine($"Sinh nhật tiếp theo còn: {soNgayDenSinhNhat} ngày nữa");
+        }
+        static void Bai_5()
+        {
+            //Bài 5: Quản Lý Điểm Học Phần & Quy Đổi Thang Điểm GPA(4.0)
+            Console.WriteLine("           ");
+            int tc1 = 4;
+            int tc2 = 3;
+            int tc3 = 2;
+            Console.Write($"C# ({tc1} TC): ");
+            double diemCsharp = Convert.ToDouble(Console.ReadLine());
+            Console.Write($"Toán Rời Rạc ({tc2} TC): ");
+            double diemToan = Convert.ToDouble(Console.ReadLine());
+            Console.Write($"Tiếng Anh ({tc3} TC): ");
+            double diemTA = Convert.ToDouble(Console.ReadLine());
+            // Tính điểm trung bình trọng số (Weighted Average Score): 
+            int tongTC = tc1 + tc2 + tc3;
+            double diemTb = (diemCsharp * tc1 + diemToan * tc2 + diemTA * tc3) / tongTC;
+            char diemChu = 'F';
+            double gpaThang4 = 0.0;
+            string xepLoai = "";
+
+            if (diemTb >= 8.5)
+            {
+                diemChu = 'A';
+                gpaThang4 = 4.0;
+                xepLoai = "Xuất sắc/Giỏi";
+            }
+            else if (diemTb >= 7.0)
+            {
+                diemChu = 'B';
+                gpaThang4 = 3.0;
+                xepLoai = "Khá";
+            }
+            else if (diemTb >= 5.5)
+            {
+                diemChu = 'C';
+                gpaThang4 = 2.0;
+                xepLoai = "Trung bình";
+            }
+            else if (diemTb >= 4.0)
+            {
+                diemChu = 'D';
+                gpaThang4 = 1.0;
+                xepLoai = "Yếu";
+            }
+            else if (diemTb < 4.0)
+            {
+                diemChu = 'F';
+                gpaThang4 = 0.0;
+                xepLoai = "Kém (Trượt)";
+            }
+            Console.WriteLine($"Điểm TB Thang 10: {diemTb:0.00}");
+            Console.WriteLine($"Điểm chữ quy đổi: {diemChu}");
+            Console.WriteLine($"Điểm GPA thang 4: {gpaThang4:0.00}");
+            Console.WriteLine($"Xếp Loại Học Lực: {xepLoai}");
+        }
+        static void Bai_6()
+        {
+          //Bài 6: Chuẩn Hóa Họ Tên Người Dùng &Tự Động Tạo Email / Username
         }
 
         public static void Main(string[] args)
@@ -172,6 +284,9 @@ namespace Tructran.session03
             Bai_1();
             Bai_2();
             Bai_3();
+            Bai_4();
+            Bai_5();
+            Bai_6();
 
             Console.ReadKey();
             
