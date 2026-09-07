@@ -8,7 +8,7 @@ namespace Tructran.sesson04
 {
     internal class GiaiPTBac2
     {
-        public static void Main243243(string[] args)
+        public static void Main63333(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("Giải phương trình bậc 2: ax^2 + bx + c = 0");

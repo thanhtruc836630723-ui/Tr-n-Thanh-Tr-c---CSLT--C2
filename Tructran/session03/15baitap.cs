@@ -182,7 +182,7 @@ namespace Tructran.session03
                     out ngaySinh
             );
 
-            // 2. Lấy ngày hiện tại của hệ thống (bỏ qua phần giờ phút giây)
+            // Lấy ngày hiện tại của hệ thống (bỏ qua phần giờ phút giây)
             DateTime ngayHienTai = DateTime.Now.Date;
 
             if (!isValid || ngaySinh > ngayHienTai)
@@ -191,7 +191,7 @@ namespace Tructran.session03
                 return;
             }
 
-            // 3. Tính tuổi chính xác
+            // Tính tuổi chính xác
             int tuoi = ngayHienTai.Year - ngaySinh.Year;
             // Nếu trong năm nay chưa tới ngày sinh nhật thì trừ đi 1 tuổi
             if (ngayHienTai < ngaySinh.AddYears(tuoi))
@@ -199,11 +199,11 @@ namespace Tructran.session03
                 tuoi--;
             }
 
-            // 4. Tính tổng số ngày đã sống từ lúc sinh ra (dùng TimeSpan)
+            // Tính tổng số ngày đã sống từ lúc sinh ra (dùng TimeSpan)
             TimeSpan daSong = ngayHienTai - ngaySinh;
             int tongSoNgaySong = (int)daSong.TotalDays;
 
-            // 5. Xác định ngày sinh nhật kế tiếp
+            // Xác định ngày sinh nhật kế tiếp
             DateTime sinhNhatTiepTheo = new DateTime(ngayHienTai.Year, ngaySinh.Month, ngaySinh.Day);
             // Nếu sinh nhật năm nay đã qua, dời sang năm sau
             if (sinhNhatTiepTheo < ngayHienTai)
@@ -278,7 +278,7 @@ namespace Tructran.session03
           //Bài 6: Chuẩn Hóa Họ Tên Người Dùng &Tự Động Tạo Email / Username
         }
 
-        public static void Main(string[] args)
+        public static void Main56454(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
             Bai_1();
