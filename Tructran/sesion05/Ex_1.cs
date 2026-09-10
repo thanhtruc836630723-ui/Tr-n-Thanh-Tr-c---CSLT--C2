@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace Tructran.sesion05
@@ -23,27 +24,72 @@ namespace Tructran.sesion05
         static void GameRandom()
         {
             Random rnd = new Random();
-            int com_num = rnd.Next(10) + 1;
-            
-            for (int a= 0; a < 10; a++)
+            bool continue_play = true;
+            int dem_thang = 0;int tong_so_van_choi = 0;
+         
+            do
             {
-                Console.Write(" Bạn chọn số mấy? " );
-                int user_num = int.Parse(Console.ReadLine());
-                if (user_num == com_num)
+                int com_num = rnd.Next(100) + 1;
+                int so_lan_doan = 0;
+
+                Console.Write("Hãy chọn level bạn muốn nè <1-dễ, 2-cũng cũng, 3-khó> : ");
+                int level = int.Parse(Console.ReadLine());
+      
+
+                switch (level)
                 {
-                    Console.WriteLine("Yaassss! Đúng òi =))");
-                    break;
-                } else if (user_num < com_num )
-                {
-                    Console.WriteLine("Số bạn chọn bé hơn số máy chọn");
+                    case 1:
+                        so_lan_doan = 10;
+                        break;
+                    case 2:
+                        so_lan_doan = 7;
+                        break;
+                    case 3:
+                        so_lan_doan = 5;
+                        break;
+                    default:
+                        Console.WriteLine("Ban đã chọn level không hợp lệ! Không cho chơi :))");
+                        continue_play = false;
+                        break;
                 }
-                else if (user_num > com_num )
+                Console.WriteLine($"Bạn có {so_lan_doan} lần đoán số từ 1- 100");
+                Console.WriteLine();
+                tong_so_van_choi++;
+                bool thang = false;
+
+                for (int a = 0; a < so_lan_doan ; a++)
                 {
-                    Console.WriteLine("Số bạn chọn lớn hơn số máy chọn");
+                    Console.Write("Bạn chọn số mấy nè? ");
+                    int user_num = int.Parse(Console.ReadLine());
+                    if (user_num == com_num)
+                    {
+                        dem_thang++;
+                        Console.WriteLine("Yaassss! Đúng òi =))");
+                        Console.WriteLine($"Bạn đã thắng sau {a + 1} lần chơi");
+                        break;
+                    }
+                    else if (user_num < com_num)
+                    {
+                        Console.WriteLine("Số bạn chọn bé hơn số máy chọn");
+                    }
+                    else if (user_num > com_num)
+                    {
+                        Console.WriteLine("Số bạn chọn lớn hơn số máy chọn");
+                    }
                 }
- 
-            }
-            Console.WriteLine( );
+                Console.WriteLine($"Số máy chọn là: {com_num}");
+
+                Console.Write("Bạn muốn chơi tiếp nữa không? <c/k>: ");
+                string tl = Console.ReadLine();
+                if (tl.ToLower() == "k")
+                    continue_play = false;
+                else if (tl.ToLower() == "c")
+                    continue_play = true;
+
+            } while (continue_play);
+
+
+
         }
 
         static void Bai_1()
@@ -141,11 +187,11 @@ namespace Tructran.sesion05
         {
             Console.OutputEncoding = Encoding.UTF8;
             //BangCuuChuong();
-            //GameRandom();
+            GameRandom();
             //Bai_1();
             //Bai_2();
-            Bai_4_5();
-            Bai_6();
+            //Bai_4_5();
+            //Bai_6();
         }
     }
 }
