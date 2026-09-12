@@ -81,10 +81,10 @@ namespace Tructran.sesion05
 
                 Console.Write("Bạn muốn chơi tiếp nữa không? <c/k>: ");
                 string tl = Console.ReadLine();
-                if (tl.ToLower() == "k")
-                    continue_play = false;
-                else if (tl.ToLower() == "c")
+                if (tl.ToLower() == "c")
                     continue_play = true;
+                else continue_play = false;                           
+              
 
             } while (continue_play);
 
@@ -149,32 +149,31 @@ namespace Tructran.sesion05
             Console.WriteLine( );
 
             //Dạng 2
-            int val = 1;
+            int dem = 1;
             for ( int n = 1; n  < rows; n++)
             {
                 for (int f = 1; f <= n; f++)
                 {
-                    Console.Write(val + " ");
-                    val++;
-                }
-                Console.WriteLine( );
-            }
-
-            //Dạng 3
-            for (int o = 1; o <= rows; o++)
-            {
-                for (int space = 1; space <= rows - o; o++)
-                {
-                    Console.Write(" " );
-                }
-                for (int o1 = 1; o1 <= o; o1++)
-                {
-                    Console.Write(val + " " );
-                    val++;
+                    Console.Write(dem + " ");
+                    dem++;
                 }
                 Console.WriteLine();
             }
-          
+            Console.WriteLine();
+
+            //Dạng 3
+
+            int dem3 = 1;
+            for (int g = 1; g <= rows; g++)
+            {
+                for (int space = 1; space <= rows - g; space++)
+                {
+                    Console.Write(" ");
+                }
+
+                for ()
+                
+            }
 
 
          
@@ -187,11 +186,11 @@ namespace Tructran.sesion05
         {
             Console.OutputEncoding = Encoding.UTF8;
             //BangCuuChuong();
-            GameRandom();
+            //GameRandom();
             //Bai_1();
             //Bai_2();
-            //Bai_4_5();
-            //Bai_6();
+            Bai_4_5();
+            Bai_6();
         }
     }
 }
