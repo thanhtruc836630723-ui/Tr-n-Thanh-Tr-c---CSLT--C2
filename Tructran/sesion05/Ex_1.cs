@@ -171,7 +171,13 @@ namespace Tructran.sesion05
                     Console.Write(" ");
                 }
 
-                for ()
+                for (int p =1; p <= g; p++ )
+                {
+                    Console.Write(dem3 + " ");
+                    dem3++;
+                }
+
+                Console.WriteLine();
                 
             }
 
@@ -182,15 +188,69 @@ namespace Tructran.sesion05
         {
            // Hãy viết chương trình hiển thị n số hạng của chuỗi điều hòa và tổng của chúng: 1 + 1/2 + 1/3 + 1/4 + 1/5 + ... + 1/n.
         }
-        public static void Main(string[] args)
+        static void Bai_7()
+        {
+            //Viết chương trình để tìm các số "hoàn hảo" trong một phạm vi số cho trước.
+            Console.Write(" Nhập số cần kiểm tra: " );
+            int so = int.Parse(Console.ReadLine());
+
+            int tong = 0;
+            for (int i = 1; i <= so/2; i++)
+            {
+                if (so % i == 0)
+                    tong += i;
+            }
+
+            if (tong == so)
+            {
+                Console.Write($"Số {so} là số hoàn thiện" );
+            }else
+                Console.WriteLine($"Số {so} KHÔNG là số hoàn thiện" );
+        }
+
+        static void Bai_8()
+        {
+            //Hãy viết chương trình xác định xem một số cho trước có phải là số nguyên tố hay không.
+            Console.Write("Nhập số cần kiểm tra: " );
+            int sckt = int.Parse(Console.ReadLine());
+
+            bool kt = true; 
+            for (int i = 2; i <= sckt/2; i++)
+            {
+                if ( sckt % i == 0)
+                {
+                    kt = false;
+                    break;
+                }
+            if (kt)
+                {
+                    Console.WriteLine($"Số {sckt} là số nguyên tố");
+                }
+            else
+                {
+                    Console.WriteLine($"Số {sckt} kHÔNG là số nguyên tố");
+                }
+              
+            }
+        }
+
+        static void Bai_in_N_snt_dautien()
+        {
+
+        }
+        public static void Main44444(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
             //BangCuuChuong();
             //GameRandom();
             //Bai_1();
             //Bai_2();
-            Bai_4_5();
+            //Bai_4_5();
             Bai_6();
+            //Bai_7();
+            Bai_8();
+            Bai_in_N_snt_dautien();
+
         }
     }
 }
