@@ -8,7 +8,7 @@ namespace CSLT1.session06
     {
         public static int TimGiaTriLonNhat(int a, int b, int c)
         {
-            //Viết hàm C# để tìm giá trị lớn nhất của ba số.
+            //1.1Viết hàm C# để tìm giá trị lớn nhất của ba số.
             int max = a;
             if (b > max)
             {
@@ -22,7 +22,7 @@ namespace CSLT1.session06
             return Math.Max(a, Math.Max(b, c));
         }
 
-        //Cải tiến phiên bản tiếp theo để hàm chấp nhận ít nhất 1 tham số.
+        //1.2Cải tiến phiên bản tiếp theo để hàm chấp nhận ít nhất 1 tham số.
         public static int TimGiaTriLonNhatCaiTien(int first, params int[] rest)
         {
             int max = first;
@@ -36,7 +36,7 @@ namespace CSLT1.session06
             return max;
         }
 
-        //Hãy viết một hàm C# để tính giai thừa của một số (số nguyên không âm). Hàm này nhận số đó làm tham số.
+        //2. Hãy viết một hàm C# để tính giai thừa của một số (số nguyên không âm). Hàm này nhận số đó làm tham số.
 
         public static long CalculateFactorial(int n)
         {
@@ -50,8 +50,11 @@ namespace CSLT1.session06
             return result;
         }
 
-
-
+        //3. Viết một hàm C# nhận vào một số làm tham số và kiểm tra xem số đó có phải là số nguyên tố hay không.
+        public static bool IsPrime(int number)
+        {
+            
+        }
         public static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
@@ -69,6 +72,8 @@ namespace CSLT1.session06
             Console.Write("Nhập số n: " );
             int n = int.Parse(Console.ReadLine());
             Console.WriteLine(n + "! = " + CalculateFactorial(n));
+
+            
         }
     }
 }
