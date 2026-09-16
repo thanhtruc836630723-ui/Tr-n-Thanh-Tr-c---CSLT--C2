@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace CSLT1.session06
@@ -20,6 +21,7 @@ namespace CSLT1.session06
             }
           
             return Math.Max(a, Math.Max(b, c));
+            Console.WriteLine();
         }
 
         //1.2Cải tiến phiên bản tiếp theo để hàm chấp nhận ít nhất 1 tham số.
@@ -51,10 +53,38 @@ namespace CSLT1.session06
         }
 
         //3. Viết một hàm C# nhận vào một số làm tham số và kiểm tra xem số đó có phải là số nguyên tố hay không.
-        public static bool IsPrime(int number)
+        static bool IsPrimeNumber(int num)
         {
-            
+            if (num <= 2) return false;
+            for (int i = 2; i <= num % 2; i++)
+            {
+                if (num % i == 0)
+                    return false;
+            }
+            return true;
+
+
         }
+
+
+        //4.1. In tất cả các số nguyên tố nhỏ hơn một số cho trước 
+        static void PrintPrimeNumbersUnderN(int number)
+        {
+            for (int i = 2; i <number; i++)
+            {
+                if (IsPrime(i))
+                    Console.Write($"{i}, ");
+            }
+        }
+
+
+
+
+
+
+
+        //4.2. In N số nguyên tố đầu tiên.
+
         public static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
@@ -73,7 +103,28 @@ namespace CSLT1.session06
             int n = int.Parse(Console.ReadLine());
             Console.WriteLine(n + "! = " + CalculateFactorial(n));
 
-            
+            Console.Write("Nhập số bạn muốn kiểm tra có là số nguyên tố hay không: ");
+            int num = int.Parse(Console.ReadLine());
+            if (IsPrimeNumber(num))
+            {
+                Console.WriteLine($"Số {num} là số nguyên tố");
+            }
+            else
+            {
+                Console.WriteLine($"Số {num} không phải là số nguyên tố");
+            }
+            Console.WriteLine();
+
+            Console.Write("Nhập số bất kỳ: ");
+            int number = int.Parse(Console.ReadLine());
+            Console.WriteLine($"Các số nguyên tố nhỏ hơn {number}");
+            PrintPrimeNumbersUnderN(number);
+
+
+
+
+
+
         }
     }
 }
