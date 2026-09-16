@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Net.Sockets;
 using System.Text;
 
 namespace CSLT1.session06
@@ -68,22 +69,30 @@ namespace CSLT1.session06
 
 
         //4.1. In tất cả các số nguyên tố nhỏ hơn một số cho trước 
-        static void PrintPrimeNumbersUnderN(int number)
+        static void PrintPrimeNumbersUnderN(int n)
         {
-            for (int i = 2; i <number; i++)
+            for (int i = 2; i <n;i++)
             {
                 if (IsPrime(i))
                     Console.Write($"{i}, ");
             }
         }
 
-
-
-
-
-
-
         //4.2. In N số nguyên tố đầu tiên.
+        static void PrintFirstNPrimeNumbers(int n)
+        {
+            int dem = 0;
+            int num = 2;
+            while (dem < n)
+            {
+                if (IsPrime(num))
+                {
+                    Console.Write($"{num}, ");
+                    dem++;
+                }
+            }
+            num++;
+        }
 
         public static void Main(string[] args)
         {
@@ -115,10 +124,15 @@ namespace CSLT1.session06
             }
             Console.WriteLine();
 
-            Console.Write("Nhập số bất kỳ: ");
-            int number = int.Parse(Console.ReadLine());
-            Console.WriteLine($"Các số nguyên tố nhỏ hơn {number}");
-            PrintPrimeNumbersUnderN(number);
+            Console.Write("Nhập số n bất kỳ: ");
+            int so = int.Parse(Console.ReadLine());
+            Console.WriteLine($"Các số nguyên tố nhỏ hơn {so}");
+            PrintPrimeNumbersUnderN(so);
+            Console.WriteLine();
+            Console.WriteLine($"{num} số nguyên tố đầu tiên");
+            PrintFirstNPrimeNumbers(num);
+
+
 
 
 
