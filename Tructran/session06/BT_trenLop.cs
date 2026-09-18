@@ -9,7 +9,7 @@ namespace CSLT1.session06
 {
     internal class BT_trenLop
     {
-        public static int TimGiaTriLonNhat(int a, int b, int c)
+         static int TimGiaTriLonNhat(int a, int b, int c)
         {
             //1.1Viết hàm C# để tìm giá trị lớn nhất của ba số.
             int max = a;
@@ -27,7 +27,7 @@ namespace CSLT1.session06
         }
 
         //1.2Cải tiến phiên bản tiếp theo để hàm chấp nhận ít nhất 1 tham số.
-        public static int TimGiaTriLonNhatCaiTien(int first, params int[] rest)
+        static int TimGiaTriLonNhatCaiTien(int first, params int[] rest)
         {
             int max = first;
             foreach (int num in rest)
