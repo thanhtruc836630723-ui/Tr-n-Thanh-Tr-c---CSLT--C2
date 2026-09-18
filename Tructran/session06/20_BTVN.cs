@@ -27,8 +27,53 @@ namespace CSLT1.session06
         //Bài 4: Tính giai thừa của một số
         static long TinhGiaiThua(int so)
         {
-            for (so = 1; so <  )
+            long kq = 1;
+            for (int i = 1; i <= so; i++ )
+            {
+                kq *= i;
+            }
+            return kq;
         }
+
+        //Bài 5: Đảo ngược chuỗi ký tự
+        static string DaoNguocChuoi(string input)
+        {
+            char[] chuoi = input.ToCharArray();
+            Array.Reverse(chuoi);
+            return new string(chuoi);
+        }
+
+        //Bài 6: Kiểm tra số nguyên tố
+        static bool KiemTraSoNguyenTo(int num)
+        {
+            if (num < 2 )
+                return false;
+            for (int i = 2; i * i <= num; i++)
+            {
+                if (num % i == 0)
+                    return false;
+            }
+            return true;
+        }
+
+        //Bài 7: In dãy Fibonacci
+        static void InDayFibonacci(int number)
+        {
+            int u = 0;
+            int e = 1;
+            for (int i = 0; i < number; i++)
+            {
+                Console.Write(u);
+                if (i < number - 1)
+                    Console.Write(", ");
+                int h = u + e;
+                u = e;
+                e = h;
+            }
+        }
+
+        //Bài 8: Đếm số lượng nguyên âm trong chuỗi
+
         public static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
@@ -60,6 +105,35 @@ namespace CSLT1.session06
             Console.WriteLine();
 
             //Bài 4
+            Console.Write("Chọn số bạn thích: ");
+            int so = int.Parse(Console.ReadLine());
+            Console.WriteLine($"{so}! = {TinhGiaiThua(so)}");
+            Console.WriteLine();
+
+            //Bài 5
+            Console.Write("Viết 1 câu bạn nghĩ ra: " );
+            string input = Console.ReadLine();
+            Console.WriteLine($"Đảo ngược lại câu là {DaoNguocChuoi(input)}");
+            Console.WriteLine();
+
+            //Bài 6
+            Console.Write("Nhập số bạn muốn kiểm tra có phải là số nguyên tố hay không: ");
+            int num = int.Parse(Console.ReadLine());
+            if (KiemTraSoNguyenTo(num))
+                Console.WriteLine("True");
+            else
+                Console.WriteLine("False");
+            Console.WriteLine();
+
+            //Bài 7
+            Console.Write("Nhập số bất kỳ: " );
+            int number = int.Parse(Console.ReadLine());
+            Console.Write("Dãy Fibonacci: " );
+            InDayFibonacci(number);
+            Console.WriteLine();
+
+            //Bài 8
+
         }
     }
 }
