@@ -73,8 +73,41 @@ namespace CSLT1.session06
         }
 
         //Bài 8: Đếm số lượng nguyên âm trong chuỗi
+        static int DemNguyenAm(string s)
+        {
+            int dem = 0;
+            foreach(char c in s.ToLower())
+            {
+                if (c == 'a' || c == 'e' || c == 'i' || c == 'u' || c == 'o')
+                {
+                    dem++;
+                }
 
+            }
+            return dem;
+        }
 
+        //Bài 9: Tính lũy thừa
+        static double TinhLuyThua(double d, int l)
+        {
+            double ketqua = 1;
+            for (int i = 0; i < l; i++)
+            {
+                ketqua *= d;
+            }
+            return ketqua;
+        }
+
+        //Bài 10: Tính điểm trung bình của mảng
+        static double TinhTrungBinh(int[] arr)
+        {
+            double tong = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                tong += arr[i];
+            }
+            return (double)tong / arr.Length;
+        }
         public static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
@@ -134,6 +167,37 @@ namespace CSLT1.session06
             Console.WriteLine();
 
             //Bài 8
+            Console.Write("Nhập câu/ từ: " );
+            string s = Console.ReadLine();
+            Console.WriteLine($"Số nguyên âm có trong câu/ từ là: {DemNguyenAm(s)}" );
+            Console.WriteLine();
+
+            //Bài 9
+            Console.Write("Nhập số bạn muốn tính lũy thừa: ");
+            double d = double.Parse(Console.ReadLine());
+            Console.Write("Nhập số mũ: ");
+            int l = int.Parse(Console.ReadLine());
+            double ketqua = TinhLuyThua(d, l);
+            Console.WriteLine($"Lũy thừa của {d}^{l} là {ketqua}");
+            Console.WriteLine();
+
+            //Bài 10
+            // Bài 10
+            Console.Write("Nhập số lượng phần tử: ");
+            int  phantu= int.Parse(Console.ReadLine());
+
+            int[] arr = new int[n];
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write("Nhập phần tử thứ " + (i + 1) + ": ");
+                arr[i] = int.Parse(Console.ReadLine());
+            }
+            double ketQua = TinhTrungBinh(arr);
+            Console.WriteLine("Điểm trung bình = " + ketQua);
+            Console.WriteLine();
+
+
 
         }
     }
