@@ -238,18 +238,18 @@ namespace Tructran.sesion05
         {
 
         }
-        public static void Main44444(string[] args)
+        public static void Main23433(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
             //BangCuuChuong();
-            //GameRandom();
+            GameRandom();
             //Bai_1();
             //Bai_2();
             //Bai_4_5();
-            Bai_6();
+            //Bai_6();
             //Bai_7();
-            Bai_8();
-            Bai_in_N_snt_dautien();
+            //Bai_8();
+            //Bai_in_N_snt_dautien();
 
         }
     }
