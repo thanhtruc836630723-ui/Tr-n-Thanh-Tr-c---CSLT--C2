@@ -108,6 +108,21 @@ namespace CSLT1.session06
             }
             return (double)tong / arr.Length;
         }
+
+        //Bài 11: Kiểm tra tính đối xứng
+        static bool KiemTraDoiXung(string s) 
+        { 
+            for (int i = 0; i < s.Length / 2; i++)
+            {
+                if (s[i] != s[s.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        //Bài 12
         public static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
@@ -182,7 +197,6 @@ namespace CSLT1.session06
             Console.WriteLine();
 
             //Bài 10
-            // Bài 10
             Console.Write("Nhập số lượng phần tử: ");
             int  phantu= int.Parse(Console.ReadLine());
 
@@ -197,6 +211,16 @@ namespace CSLT1.session06
             Console.WriteLine("Điểm trung bình = " + ketQua);
             Console.WriteLine();
 
+            //Bài 11
+            Console.Write("Nhập từ cần kiểm tra đối xứng: ");
+            string m= Console.ReadLine();
+            if (KiemTraDoiXung(s))
+                Console.WriteLine("True");
+            else
+                Console.WriteLine("False");
+            Console.WriteLine();
+
+            //Bài 12
 
 
         }
