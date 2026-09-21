@@ -239,7 +239,7 @@ namespace CSLT1.session06
 
 
 
-        public static void Main(string[] args)
+        public static void Main444(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
             //Bài 1
@@ -324,7 +324,7 @@ namespace CSLT1.session06
                 arr[i] = int.Parse(Console.ReadLine());
             }
             double ketQua = TinhTrungBinh(arr);
-            Console.WriteLine("Điểm trung bình = " + ketQua);
+            Console.WriteLine("Điểm trung bình = {ketQua}");
             Console.WriteLine();
 
             //Bài 11
