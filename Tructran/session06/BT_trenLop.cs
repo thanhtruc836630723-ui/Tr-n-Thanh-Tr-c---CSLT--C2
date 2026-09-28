@@ -226,7 +226,7 @@ namespace CSLT1.session06
                 Console.WriteLine("=> Đây KHÔNG PHẢI là câu Pangram.");
             }
 
-            Console.ReadLine();
+            Console.WriteLine();
 
 
 
