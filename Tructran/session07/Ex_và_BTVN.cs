@@ -185,7 +185,7 @@ namespace CSLT1.session07
 
 
 
-        public static void Main(string[] args)
+        public static void Main2334(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
 
